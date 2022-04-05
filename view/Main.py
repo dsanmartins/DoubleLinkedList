@@ -3,13 +3,16 @@ Created on 04-04-2022
 
 @author: dsanmartins
 '''
-from model.Client import Client
 from controller.DatabaseController import DatabaseController
+from controller.ClientController import ClientController
+from controller.NodeListController import NodeListController
 
 database = DatabaseController()
-database.populateDatabase()
+clientController = ClientController()
+nodeListController = NodeListController()
 
-nodeList = database.getNodeList()
+database.populateDatabase()
+nodeList = nodeListController.getNodeList()
 
 list_ = database.getClient("clients.csv")
 for i in range(len(list_)):
@@ -27,7 +30,7 @@ while True:
     elif choice =='2':
         clientDni = input("DNI of the client?")
         clientName = input("Name of the client?")
-        nodeList.addNode(Client(clientDni,clientName))
+        nodeList.addNode(clientController.createClient(clientDni,clientName))
     elif choice =='3':
         try:
             clientDni = input("Search by DNI")
