@@ -5,6 +5,7 @@ Created on 04-04-2022
 '''
 
 from model.utils.Database import Database
+from model.NodeList import NodeList
 
 class DatabaseController():
     
@@ -18,3 +19,13 @@ class DatabaseController():
     def getClient(self,filename):
         database = Database()
         return database.getData(filename)
+    
+    def getNodeList(self):
+        nodeList = NodeList
+        return nodeList
+        
+        
+        
+        
+        
+    

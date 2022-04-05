@@ -3,13 +3,13 @@ Created on 04-04-2022
 
 @author: dsanmartins
 '''
-from model.NodeList import NodeList
 from model.Client import Client
 from controller.DatabaseController import DatabaseController
 
-nodeList = NodeList()
 database = DatabaseController()
 database.populateDatabase()
+
+nodeList = database.getNodeList()
 
 list_ = database.getClient("clients.csv")
 for i in range(len(list_)):
