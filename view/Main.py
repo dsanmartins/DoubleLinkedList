@@ -12,11 +12,7 @@ clientController = ClientController()
 nodeListController = NodeListController()
 
 database.populateDatabase()
-nodeList = nodeListController.getNodeList()
-
-list_ = database.getClient("clients.csv")
-for i in range(len(list_)):
-    nodeList.addNode(list_[i])
+clientList = database.getClient("clients.csv")
 
 print("***** Please chose an option ******")
 print("[1] Print the list")
@@ -26,15 +22,15 @@ choice = input("?")
 while True:
     
     if choice =='1':
-        nodeList.printList()
+        clientList.printList()
     elif choice =='2':
         clientDni = input("DNI of the client?")
         clientName = input("Name of the client?")
-        nodeList.addNode(clientController.createClient(clientDni,clientName))
+        clientList.addNode(clientController.createClient(clientDni,clientName))
     elif choice =='3':
         try:
             clientDni = input("Search by DNI")
-            client = nodeList.searchByDni(clientDni)
+            client = clientList.searchByDni(clientDni)
             print("The client exist in the database!")
             print("")
         except(Exception,AttributeError):

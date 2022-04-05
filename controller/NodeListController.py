@@ -5,7 +5,6 @@ Created on 05-04-2022
 '''
 from model.NodeList import NodeList
 
-
 class NodeListController():
     
     def __init__(self):
