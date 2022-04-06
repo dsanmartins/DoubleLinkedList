@@ -42,4 +42,25 @@ class NodeList:
                 if node.getClient().getDni() == dni:
                     return node.getClient()
                 node = node.getNext_()
+                
+    def deleteNode(self,dni):
+        if not self.isEmpty():
+            node = self.__head.getNext_()
+            while (node is not None):
+                if node.getClient().getDni() == dni:
+                    if node == self.__tail:
+                        prevNode = node.getPrevious()
+                        prevNode.setNext_(None)
+                        node.setPrevious(None)
+                        node.setNext_(None)
+                    else:
+                        prevNode = node.getPrevious()
+                        nextNode = node.getNext_()
+                        prevNode.setNext_(node.getNext_())
+                        nextNode.setPrevious(node.getPrevious())
+                        node.setPrevious(None)
+                        node.setNext_(None)
+                    return True
+                node = node.getNext_()
+            return False
     

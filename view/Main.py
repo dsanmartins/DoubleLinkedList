@@ -7,17 +7,18 @@ from controller.DatabaseController import DatabaseController
 from controller.ClientController import ClientController
 from controller.NodeListController import NodeListController
 
-database = DatabaseController()
+databaseController = DatabaseController()
 clientController = ClientController()
 nodeListController = NodeListController()
 
-database.populateDatabase()
-clientList = database.getClient("clients.csv")
+databaseController.populateDatabase()
+clientList = databaseController.getClient("clients.csv")
 
 print("***** Please chose an option ******")
 print("[1] Print the list")
 print("[2] Add a new client")
 print("[3] Search for a client")
+print("[4] Delete a client")
 choice = input("?")
 while True:
     
@@ -35,7 +36,14 @@ while True:
             print("")
         except(Exception,AttributeError):
             print("Client does not exist")
-    elif int(choice) > 3: #Or whatever end condition
+    elif choice == '4':
+        clientDni = input("DNI of the client?")
+        result = clientList.deleteNode(clientDni)
+        if result:
+            print("The client was deleted!")
+        else:
+            print("We do not find the client!")
+    elif int(choice) > 4: #Or whatever end condition
         print("Bye!")
         break
     
@@ -44,6 +52,7 @@ while True:
     print("[1] Print the list")
     print("[2] Add a new client")
     print("[3] Search for a client")
+    print("[4] Delete a client")
     choice = input("?")
     
 
