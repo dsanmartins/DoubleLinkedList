@@ -2,6 +2,7 @@ import wx
 import wx.grid as gridlib
 import wx.lib.masked as masked
 from wx.grid import GridCellAutoWrapStringRenderer
+from view.Validator import NotEmptyValidator
 
 from controller.DatabaseController import DatabaseController
 from controller.ClientController import ClientController
@@ -44,7 +45,7 @@ class Maintainer(wx.Frame):
         
         self.box1 = wx.StaticBox(self.panel, wx.ID_ANY, "Ingresar Cliente", pos=(10,0),size=(790, 100))
         self.lbl1 = wx.StaticText(self.box1, -1, 'DNI:', pos =(10,25))
-        self.txt1 = masked.TextCtrl(self.box1, style=wx.TE_LEFT, size=(120, 25), name = "txt1", pos = (50,23),  mask = '##.###.###-#')
+        self.txt1 = masked.TextCtrl(self.box1, style=wx.TE_LEFT, size=(120, 25), name = "txt1", pos = (50,23),  mask = '##.###.###-#',   validator=NotEmptyValidator())
         self.lbl2 = wx.StaticText(self.box1, -1, 'Nombre:', pos =(180,25))
         self.txt2 = wx.TextCtrl(self.box1, style=wx.TE_LEFT, size=(250, 25), name = "txt2", pos = (245,23))
         self.btn1 = wx.Button(self.box1, label = "Guardar", size=(100, 25), pos=(505,23)) 
