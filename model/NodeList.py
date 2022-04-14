@@ -29,11 +29,13 @@ class NodeList:
             return False 
       
     def printList(self):
+        lst = []
         if not self.isEmpty():
             node = self.__head.getNext_()
             while (node is not None):
-                print("DNI", node.getClient().getDni(),"Name",node.getClient().getName())
+                lst.append(node.getClient())
                 node = node.getNext_()
+        return lst
             
     def searchByDni(self,dni):
         if not self.isEmpty():
