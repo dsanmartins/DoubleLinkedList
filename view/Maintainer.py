@@ -137,6 +137,7 @@ class Maintainer(wx.Frame):
     def OnSearchClient(self,e):
         # Se asume que la grilla esta en sincronia con la lista
         # Por lo tanto solo se hace una busqueda en la grilla, recorriendo la columna DNI
+        op = 1
         for row in range(0,self.grid.GetNumberRows()):
             item = self.grid.GetCellValue(row, 0)
             # Si el DNI del cliente es igual al DNI buscado
@@ -144,10 +145,12 @@ class Maintainer(wx.Frame):
                 dls= wx.MessageDialog( self, 'El cliente se encuentra en la fila '+ str(row+1) , "Dialogo", wx.OK)
                 dls.ShowModal()
                 dls.Destroy()
-            else:
-                dls= wx.MessageDialog( self, 'El cliente No encontrado!' , "Dialogo", wx.OK)
-                dls.ShowModal()
-                dls.Destroy()
+                op = 0
+                break
+        if op == 1:
+            dls= wx.MessageDialog( self, 'El cliente No encontrado!' , "Dialogo", wx.OK)
+            dls.ShowModal()
+            dls.Destroy()
         self.txt3.Clear()
     
     # Eliminar un cliente    
