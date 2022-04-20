@@ -23,7 +23,9 @@ choice = input("?")
 while True:
     
     if choice =='1':
-        clientList.printList()
+        lst = clientList.printList()
+        for i in lst:
+            print(i.getDni(),i.getName())
     elif choice =='2':
         clientDni = input("DNI of the client?")
         clientName = input("Name of the client?")
